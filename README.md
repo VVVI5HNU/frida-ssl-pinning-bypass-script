@@ -87,51 +87,24 @@ frida -U -f <APP_ID> -l sslpin.js
 
 ---
 
-## 🧵 Beginner Notes
-
-- Ensure `frida` and `frida-server` versions **match**  
-- If the app crashes on spawn, try attaching instead  
-- Use a dedicated test device or emulator  
-- Ensure proxy/CA certificate is correctly installed if intercepting traffic  
-
----
-
 ## 🛠 Troubleshooting Guide
 
-| Problem | Explanation | Solution |
-|--------|-------------|----------|
-| `Failed to spawn app` | App blocks injection | Use `-n <PROCESS_NAME>` attach mode |
-| `Unexpected EOF` | Wrong frida-server version | Download correct architecture |
-| No script logs | Script not loaded | Check file path and extension |
-| Device not detected | ADB not connected | Run `adb devices` and reconnect |
+### 📌 sometimes it shows “Connected to Wi-Fi but No Internet”
+This issue occurs when traffic redirection rules are active on the device.
 
----
+Use the following commands:
 
-## 📝 Security Policy
+```
+iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination <IP>:<port>
+iptables -t nat -A OUTPUT -p tcp --dport 443 -j DNAT --to-destination <IP>:<port>
+```
 
-This project is for **authorized** security testing only.  
-Read `SECURITY.md` for disclosure guidelines.
+Or reset the rules from ADB shell:
 
----
+```
+adb shell
+su
+iptables -t nat -L OUTPUT -n --line-numbers
+iptables -t nat -F
+```
 
-## 🔧 Contributions
-
-See `CONTRIBUTING.md` to follow contribution guidelines and ethical rules.
-
----
-
-## 📜 License
-
-Licensed under the **MIT License**.  
-See the `LICENSE` file for details.
-
----
-
-## 🙏 Credits
-
-Original SSL bypass script authored by **Maurizio Siddu**.  
-Documentation and structuring adapted for VAPT workflows.
-
----
-
-# ✔️ End of README.md
