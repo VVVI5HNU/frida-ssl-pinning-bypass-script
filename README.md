@@ -11,28 +11,6 @@
 `mobile-ssl-pinning-bypass` is a Frida-powered toolkit used during authorized Android mobile application penetration testing (VAPT).  
 It helps security testers analyze and bypass SSL/TLS certificate pinning to evaluate how applications validate certificates during secure communication.
 
-The purpose of this project is strictly:
-- For security testers  
-- For authorized VAPT engagements  
-- For controlled lab use  
-- For research and learning  
-
----
-
-## 📁 Repository Structure
-
-```
-/ (repo root)
-├── scripts/
-│   └── frida_multiple_unpinning.js
-├── README.md
-├── USAGE.md
-├── SECURITY.md
-├── CONTRIBUTING.md
-├── LICENSE
-└── .gitignore
-```
-
 ---
 
 ## ⚙️ Prerequisites
