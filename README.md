@@ -9,14 +9,13 @@ A Frida-powered SSL/TLS pinning bypass toolkit designed to help security testers
 ## Repository layout
 / (repo root)
 ├── scripts/
-│ └── frida_multiple_unpinning.js
+│   └── frida_multiple_unpinning.js
 ├── README.md
 ├── USAGE.md
 ├── SECURITY.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── .gitignore
-
 
 ## Quick start (high-level)
 1. Prepare device and host (adb, frida).
