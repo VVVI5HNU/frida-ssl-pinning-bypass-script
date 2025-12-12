@@ -104,7 +104,7 @@ Copy the app identifier (package name).
 
 ### Start Frida with the SSL pinning bypass script:
 ```
-frida -U -f <APP_ID> -l scripts/frida_multiple_unpinning.js --no-pause
+frida -U -f <APP_ID> -l <sslpin.js>
 ```
 
 Or attach to a running process:
