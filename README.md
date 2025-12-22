@@ -38,6 +38,7 @@ On your Android device:
 4. Enable:  
    - **USB Debugging**  
    - **Wireless Debugging**
+5. In Kali install adb (sudo apt install adb)
 
 ---
 
