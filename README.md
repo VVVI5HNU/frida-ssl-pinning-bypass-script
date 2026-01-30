@@ -71,9 +71,50 @@ su
 /data/local/tmp/frida-server
 ```
 
+## 🌐 Step 3 — Burp Suite Certificate & Proxy Setup
+
+To intercept traffic, your device must route data through Burp Suite, and the device must trust Burp's Certificate Authority (CA).
+
+### **1. Configure Burp Proxy Listener**
+
+* Open Burp Suite → **Proxy** → **Proxy Settings**.
+* Click **Add** under Proxy Listeners.
+* Set **Bind to port** (e.g., `8080`).
+* Set **Bind to address** to `All interfaces`.
+
+### **2. Export the CA Certificate**
+
+* In Burp, go to **Proxy** → **Proxy Settings** → **Import / export CA certificate**.
+* OR just eneter the address in the mobile browser while connected with the same network
+* Select **Certificate in DER format** and save it as `cacert.der`.
+
+### **3. Push and Install Certificate**
+
+1. Push the certificate to the device:
+```bash
+adb push cacert.der /data/local/tmp/cert-der.crt
+
+```
+
+
+2. On the Android device:
+* Go to **Settings → Security → Encryption & credentials**.
+* Select **Install from storage → CA Certificate**.
+* Browse to `/data/local/tmp/` and select `cert-der.crt`.
+
+
+
+### **4. Set Android Wi-Fi Proxy**
+
+* Go to **Settings → Wi-Fi**.
+* Long-press your network → **Modify Network**.
+* Set **Proxy** to `Manual`.
+* **Proxy hostname:** Your Kali/Host IP.
+* **Proxy port:** `8080`.
+
 ---
 
-## 🧪 Step 3 — Run Frida Commands (from another terminal)
+## 🧪 Step 5 — Run Frida Commands (from another terminal)
 
 ### List all running apps:
 ```
