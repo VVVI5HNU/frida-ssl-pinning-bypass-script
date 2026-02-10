@@ -108,4 +108,8 @@ su
 iptables -t nat -L OUTPUT -n --line-numbers
 iptables -t nat -F
 ```
+View iptables
+```
+iptables -t nat -L -v -n
 
+```
